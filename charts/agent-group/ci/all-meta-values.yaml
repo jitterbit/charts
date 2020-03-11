@@ -1,0 +1,13 @@
+metadata:
+  chartName: jitterbit/agent-group
+  chartVersion: 0.1.0
+image:
+  tag: 10
+agent:
+  registerjson:
+    cloudUrl: https://na-east.jitterbit.com
+    username: $00lAuva91/rNxAaoQ+bC3pdtq+dXD9CLw9YdFGxcHLXI3Fhgf6JXQp3dDnIVKZE89xzwREjV/KDqINtTr8XQ/w==
+    password: $00RIOD/BqGlQ1ack56p2GKG8vXJlpfAnbLxyUs5GqH8=
+    agentGroupId: 6282
+    agentNamePrefix: "%host%"
+    deregisterAgentOnDrainstop: true

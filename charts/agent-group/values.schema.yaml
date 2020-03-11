@@ -1,0 +1,93 @@
+$schema: http://json-schema.org/draft-07/schema#
+title: Agent Group Chart Configuration
+description: agent-group chart configuration
+type: object
+additionalProperties: false
+required:
+  - image
+  - agent
+  - hpa
+  - replicas
+  - resources
+  - revisionHistoryLimit
+  - affinity
+  - env
+properties:
+  metadata:
+    description: Chart metadata
+    type: object
+  image:
+    description: Docker image configuration
+    $ref: '#/definitions/image'
+  agent:
+    description: Agent Group specific configuration
+    type: object
+    additionalProperties: false
+    required:
+      - registerjson
+    properties:
+      registerjson:
+        description: agent group's register.json file
+        oneOf:
+          - type: object
+            additionalProperties: false
+          - type: object
+            additionalProperties: false
+            required:
+              - cloudUrl
+              - username
+              - password
+              - agentGroupId
+            properties:
+              cloudUrl:
+                description: Base URL of the Jitterbit Harmony Cloud
+                type: string
+              username:
+                description: Encrypted username of the Agent Installer user (encrypted using JitterbitUtils)
+                type: string
+              password:
+                description: Encrypted password of the Agent Installer user (encrypted using JitterbitUtils)
+                type: string
+              agentGroupId:
+                description: Agent group Id from Management Console (hover over an agent group to see its Id)
+                type: number
+              agentNamePrefix:
+                description: Prefix for each auto-registered agent's name
+                type: string
+              deregisterAgentOnDrainstop:
+                description: Performs agent deregistration on drainstop/JVM shutdown (defaults to false)
+                type: boolean
+              retryCount:
+                description: Number of retries if agent is having issues making the call to Harmony cloud for registration (defaults to 10, valid range is 0-300)
+                type: integer
+                minimum: 0
+                maximum: 300
+              retryIntervalSeconds:
+                description: Number of seconds it will wait before retrying. This number doubles every retry to a max of 10 minutes (defaults to 5, valid range 5-600)
+                type: integer
+                minimum: 5
+                maximum: 600
+          - type: "null"
+      jitterbitconf:
+        description: Agent group's jitterbit.conf file
+        type:
+          - string
+          - "null"
+  hpa:
+    description: Horizontal pod autoscaler configuration
+    $ref: '#/definitions/hpa'
+  replicas:
+    description: Number of replicas set if the horizontal pod autoscaler is disabled or malfunctioning
+    $ref: '#/definitions/replicas'
+  resources:
+    description: Upper- and lower-bounded resource constraints of the containers
+    $ref: '#/definitions/resources'
+  revisionHistoryLimit:
+    description: Number of old replica sets to store in case of the need to rollback
+    $ref: '#/definitions/revisionHistoryLimit'
+  affinity:
+    description: Pod affinity and anti-affinity definitions
+    $ref: '#/definitions/affinity'
+  env:
+    description: List of extra environment variables that may be specified in the container
+    $ref: '#/definitions/env'

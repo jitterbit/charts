@@ -1,0 +1,99 @@
+$schema: http://json-schema.org/draft-07/schema#
+title: Common Chart Configuration Definitions
+description: Common chart configuration definitions
+definitions:
+  image:
+    description: Docker image configuration
+    type: object
+    additionalProperties: false
+    required:
+      - repository
+      - pullPolicy
+    anyOf:
+      - required:
+          - tag
+      - required:
+          - digest
+    properties:
+      repository:
+        description: Docker repository
+        type: string
+        minLength: 1
+        maxLength: 256
+      tag:
+        description: Docker image tag
+        type:
+          - string
+          - "null"
+        pattern: ^[0-9a-zA-Z._-]+$
+        minLength: 1
+        maxLength: 256
+      digest:
+        description: Docker image digest
+        type:
+          - string
+          - "null"
+        pattern: ^sha256:[0-9a-f]{64}$
+        minLength: 71
+        maxLength: 71
+      pullPolicy:
+        description: Pull policy of Docker image
+        type: string
+        enum:
+          - Always
+          - Never
+          - IfNotPresent
+  hpa:
+    description: Horizontal pod autoscaler configuration
+    type: object
+    additionalProperties: false
+    required:
+      - enabled
+      - minReplicas
+      - maxReplicas
+      - metrics
+    properties:
+      enabled:
+        description: Enable horizontal pod autoscaling
+        type: boolean
+      minReplicas:
+        description: Minimum number of replicas
+        type: integer
+        minimum: 1
+      maxReplicas:
+        description: Maximum number of replicas
+        type: integer
+        minimum: 1
+      metrics:
+        description: List of metrics to scale on
+        type: array
+        additionalItems: false
+        minItems: 0
+        uniqueItems: true
+        items:
+          $ref: "https://raw.githubusercontent.com/instrumenta/kubernetes-json-schema/master/v1.12.8-standalone-strict/_definitions.json#/definitions/io.k8s.api.autoscaling.v2beta2.MetricSpec"
+  replicas:
+    description: Number of replicas set if the horizontal pod autoscaler is disabled or malfunctioning
+    type: integer
+    minimum: 1
+  resources:
+    description: Upper- and lower-bounded resource constraints of the containers
+    $ref: "https://raw.githubusercontent.com/instrumenta/kubernetes-json-schema/master/v1.12.8-standalone-strict/_definitions.json#/definitions/io.k8s.api.core.v1.ResourceRequirements"
+  revisionHistoryLimit:
+    description: Number of old replica sets to store in case of the need to rollback
+    type: integer
+    minimum: 0
+  strategy:
+    description: Update strategy
+    $ref: "https://raw.githubusercontent.com/instrumenta/kubernetes-json-schema/master/v1.12.8-standalone-strict/_definitions.json#/definitions/io.k8s.api.apps.v1.DeploymentStrategy"
+  affinity:
+    description: Pod affinity and anti-affinity definitions
+    $ref: "https://raw.githubusercontent.com/instrumenta/kubernetes-json-schema/master/v1.12.8-standalone-strict/_definitions.json#/definitions/io.k8s.api.core.v1.Affinity"
+  env:
+    description: List of extra environment variables that may be specified in the container
+    type: array
+    additionalItems: false
+    minItems: 0
+    uniqueItems: true
+    items:
+      $ref: "https://raw.githubusercontent.com/instrumenta/kubernetes-json-schema/master/v1.12.8-standalone-strict/_definitions.json#/definitions/io.k8s.api.core.v1.EnvVar"

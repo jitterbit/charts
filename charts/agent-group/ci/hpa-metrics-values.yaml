@@ -1,0 +1,50 @@
+image:
+  tag: 10
+agent:
+  registerjson:
+    cloudUrl: https://na-east.jitterbit.com
+    username: $00lAuva91/rNxAaoQ+bC3pdtq+dXD9CLw9YdFGxcHLXI3Fhgf6JXQp3dDnIVKZE89xzwREjV/KDqINtTr8XQ/w==
+    password: $00RIOD/BqGlQ1ack56p2GKG8vXJlpfAnbLxyUs5GqH8=
+    agentGroupId: 6282
+    agentNamePrefix: "%host%"
+    deregisterAgentOnDrainstop: true
+hpa:
+  metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: 50
+    - type: Resource
+      resource:
+        name: memory
+        target:
+          type: Utilization
+          averageUtilization: 50
+    - type: Pods
+      pods:
+        metric:
+          name: transactions-processed-per-second
+        target:
+          type: AverageValue
+          averageValue: 10
+    - type: Object
+      object:
+        metric:
+          name: requests-per-second
+        describedObject:
+          apiVersion: networking.k8s.io/v1beta1
+          kind: Ingress
+          name: agent-group
+        target:
+          type: Value
+          value: 2k
+    - type: External
+      external:
+        metric:
+          name: queue_messages_ready
+          selector: "queue=worker_tasks"
+        target:
+          type: AverageValue
+          averageValue: 30

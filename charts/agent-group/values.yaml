@@ -1,0 +1,91 @@
+# Default values for agent-group.
+
+image:
+  # image.repository is the Docker image's repository
+  repository: jitterbit/agent
+  # image.tag is the Docker image's tag
+  tag:
+  # image.digest is the Docker image's digest
+  digest:
+  # image.pullPolicy is the Docker image's pull policy
+  pullPolicy: Always
+
+agent:
+  # agent.registerjson is the agent group's register.json file
+  registerjson: {}
+#    cloudUrl: https://na-east.jitterbit.com
+#    username: $00lAuva91/rNxAaoQ+bC3pdtq+dXD9CLw9YdFGxcHLXI3Fhgf6JXQp3dDnIVKZE89xzwREjV/KDqINtTr8XQ/w==
+#    password: $00RIOD/BqGlQ1ack56p2GKG8vXJlpfAnbLxyUs5GqH8=
+#    agentGroupId: 6282
+#    agentNamePrefix: "%host%"
+#    deregisterAgentOnDrainstop: true
+  # agent.jitterbitconf is the agent group's jitterbit.conf file
+  jitterbitconf:
+
+hpa:
+  # hpa.enabled is a flag to enable/disable the Horizontal Pod Autoscaler
+  enabled: true
+  # hpa.minReplicas is the minimum number of replicas
+  minReplicas: 1
+  # hpa.maxReplicas is the maximum number of replicas
+  maxReplicas: 1
+  # hpa.metrics is a list of metrics to scale on
+  metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: 50
+    - type: Resource
+      resource:
+        name: memory
+        target:
+          type: Utilization
+          averageUtilization: 50
+#    - type: Pods
+#      pods:
+#        metricName: transactions-processed-per-second
+#        targetAverageValue: 10
+
+# replicas is the number of replicas set if the Horizontal Pod Autoscaler is disabled or malfunctioning
+replicas: 1
+
+# resources are the upper- and lower-bounded resource constraints of the containers
+resources:
+  requests:
+    cpu: 250m
+    memory: 2Gi
+  limits:
+    cpu: 500m
+    memory: 4Gi
+
+# revisionHistoryLimit is the number of old replica sets to store in case of the need to rollback
+revisionHistoryLimit: 3
+
+# affinity is the pod's node affinity, pod affinity, and pod anti-affinity definitions
+affinity:
+  nodeAffinity: {}
+  podAffinity: {}
+  podAntiAffinity:
+    preferredDuringSchedulingIgnoredDuringExecution:
+      # we want the pods to spread across the nodes of the cluster with a weight of 10
+      - weight: 10
+        podAffinityTerm:
+          topologyKey: kubernetes.io/hostname
+          labelSelector:
+            matchLabels:
+              app: '{{ template "agent-group.name" . }}'
+              release: "{{ .Release.Name }}"
+
+# env is a list of extra environment variables that may be specified in the container
+env:
+  - name: CATALINA_OPTS
+    value: -XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap
+#  - name: ENV_VAR_NAME
+#    value: "ENV_VAR_VALUE"
+#  - name: SECRET_PASSWORD
+#    valueFrom:
+#      secretKeyRef:
+#        name: mysecret
+#        key: password

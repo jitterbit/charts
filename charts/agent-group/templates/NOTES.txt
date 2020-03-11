@@ -1,0 +1,22 @@
+{{ if or .Values.image.digest .Values.image.tag -}}
+Jitterbit Agent Group is spinning up now.
+Watch the progress by running:
+
+    kubectl -n {{ .Release.Namespace }} get po --watch | grep {{ template "agent-group.name" . }}
+
+No further action should be required.
+
+{{ else -}}
+##############################################################################
+####         ERROR: You did not set an image.digest or image.tag.         ####
+##############################################################################
+
+This deployment will fail until you set the image digest or tag.
+Set the image digest or tag and redeploy.
+
+{{ end -}}
+
+{{/*
+  Test required values
+*/}}
+{{- if include "agent-group.required" . -}}{{- end -}}
