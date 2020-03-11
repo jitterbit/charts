@@ -17,7 +17,6 @@ jobs:
         name: Run chart-testing (lint)
         uses: helm/chart-testing-action@v1.0.0-alpha.3
         with:
-          image: quay.io/helmpack/chart-testing:v3.0.0-beta.2
           command: lint
 
       - name: Create kind cluster
@@ -30,7 +29,6 @@ jobs:
       - name: Run chart-testing (install)
         uses: helm/chart-testing-action@v1.0.0-alpha.3
         with:
-          image: quay.io/helmpack/chart-testing:v3.0.0-beta.2
           command: install
 
   release:
