@@ -28,10 +28,10 @@ jobs:
         if: steps.lint.outputs.changed == 'true'
 
       - name: Run chart-testing (install)
-          uses: helm/chart-testing-action@v1.0.0-alpha.3
-          with:
-            image: quay.io/helmpack/chart-testing:v3.0.0-beta.2
-            command: install
+        uses: helm/chart-testing-action@v1.0.0-alpha.3
+        with:
+          image: quay.io/helmpack/chart-testing:v3.0.0-beta.2
+          command: install
 
   release:
     name: Release
