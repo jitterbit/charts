@@ -49,7 +49,7 @@ properties:
                 description: Encrypted password of the Agent Installer user (encrypted using JitterbitUtils)
                 type: string
               agentGroupId:
-                description: Agent group Id from Management Console (hover over an agent group to see its Id)
+                description: Agent group ID from Management Console (hover over an agent group to see its ID)
                 type: number
               agentNamePrefix:
                 description: Prefix for each auto-registered agent's name
@@ -63,7 +63,7 @@ properties:
                 minimum: 0
                 maximum: 300
               retryIntervalSeconds:
-                description: Number of seconds it will wait before retrying. This number doubles every retry to a max of 10 minutes (defaults to 5, valid range 5-600)
+                description: Number of seconds the agent will wait before retrying. This number doubles every retry to a maximum of 600 seconds (10 minutes). Defaults to 5, valid range 5-600.
                 type: integer
                 minimum: 5
                 maximum: 600
@@ -89,5 +89,5 @@ properties:
     description: Pod affinity and anti-affinity definitions
     $ref: '#/definitions/affinity'
   env:
-    description: List of extra environment variables that may be specified in the container
+    description: List of additional environment variables that may be specified in the container
     $ref: '#/definitions/env'

@@ -12,6 +12,3 @@
 .idea/
 .vscode/
 *.tmproj
-
-# JSON values schema
-*.schema.json
