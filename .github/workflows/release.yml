@@ -18,10 +18,6 @@ jobs:
           git config user.name "$GITHUB_ACTOR"
           git config user.email "${GITHUB_ACTOR}"@users.noreply.github.com
 
-      - name: Install helm 3
-        run: |
-          curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
-
       - name: Run chart-releaser
         uses: helm/chart-releaser-action@v1.0.0-alpha.2
         env:
