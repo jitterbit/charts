@@ -191,12 +191,12 @@
                 "retryIntervalSeconds": {
                   "minimum": 5,
                   "type": "integer",
-                  "description": "Number of seconds it will wait before retrying. This number doubles every retry to a max of 10 minutes (defaults to 5, valid range 5-600)",
+                  "description": "Number of seconds the agent will wait before retrying. This number doubles every retry to a maximum of 600 seconds (10 minutes). Defaults to 5, valid range 5-600.",
                   "maximum": 600
                 },
                 "agentGroupId": {
                   "type": "number",
-                  "description": "Agent group Id from Management Console (hover over an agent group to see its Id)"
+                  "description": "Agent group ID from Management Console (hover over an agent group to see its ID)"
                 },
                 "retryCount": {
                   "minimum": 0,
@@ -234,7 +234,7 @@
       "$ref": "#/definitions/affinity"
     },
     "env": {
-      "description": "List of extra environment variables that may be specified in the container",
+      "description": "List of additional environment variables that may be specified in the container",
       "$ref": "#/definitions/env"
     },
     "hpa": {

@@ -90,7 +90,7 @@ definitions:
     description: Pod affinity and anti-affinity definitions
     $ref: "https://raw.githubusercontent.com/instrumenta/kubernetes-json-schema/master/v1.12.8-standalone-strict/_definitions.json#/definitions/io.k8s.api.core.v1.Affinity"
   env:
-    description: List of extra environment variables that may be specified in the container
+    description: List of additional environment variables that may be specified in the container
     type: array
     additionalItems: false
     minItems: 0
