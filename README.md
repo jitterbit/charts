@@ -2,7 +2,7 @@
 
 [![GitHub Actions](https://github.com/jitterbit/charts/workflows/Release/badge.svg?branch=master)](https://github.com/jitterbit/charts/actions?query=workflow%3A%22Release%22+branch%3Amaster)
 
-[![Jitterbit](https://www.jitterbit.com/wp-content/uploads/2017/04/jitterbit-logo-horiz-rgb-website-364-70.png)](https://www.jitterbit.com)
+[![Jitterbit](./logos/jitterbit-logo-horizontal-rgb.png)](https://www.jitterbit.com)
 
 Charts are curated application definitions for Kubernetes Helm. For more information about installing and using Helm, see its
 [README.md](https://github.com/kubernetes/helm/tree/master/README.md). To get a quick introduction to Charts see this [chart document](https://github.com/kubernetes/helm/blob/master/docs/charts.md).
