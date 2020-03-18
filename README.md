@@ -31,13 +31,3 @@ helm upgrade --install agent-group jitterbit/agent-group
 
 For details on installing a Jitterbit Private Agent Group, see the `agent-group` chart's
 [README](https://github.com/jitterbit/charts/tree/master/charts/agent-group).
-
-
-## Installing a Jitterbit Private API Gateway
-
-```bash
-helm upgrade --install api-gateway jitterbit/api-gateway
-```
-
-For details on installing a Jitterbit Private API Gateway, see the `api-gateway` chart's
-[README](https://github.com/jitterbit/charts/tree/master/charts/api-gateway).

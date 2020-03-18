@@ -3,7 +3,7 @@
 The [agent-group](https://github.com/jitterbit/charts) is a group of Jitterbit Private Agents of the [Jitterbit
 Harmony](https://jitterbit.com) platform.
 
-This chart bootstraps an agent-group stateful set on a [Kubernetes](https://kubernetes.io) namespace using the
+This chart bootstraps an `agent-group` stateful set on a [Kubernetes](https://kubernetes.io) namespace using the
 [Helm](https://helm.sh) package manager.
 
 
