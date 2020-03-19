@@ -1,6 +1,6 @@
 # agent-group
 
-The [agent-group](https://github.com/jitterbit/charts) is a group of Jitterbit Private Agents of the [Jitterbit
+The [agent-group](https://github.com/jitterbit/charts) is a group of Private Agents of the [Jitterbit
 Harmony](https://jitterbit.com) platform.
 
 This chart bootstraps an `agent-group` stateful set on a [Kubernetes](https://kubernetes.io) namespace using the
@@ -21,12 +21,12 @@ $ helm upgrade --install --namespace apps --values ./my-values.yaml my-release j
 ```
 This example command deploys the `agent-group` on the Kubernetes cluster in the `apps` namespace.
 
-The [configuration](#configuration) section lists common parameters that will be configured often during
-installation and upgrade.
+The [configuration](#configuration) section lists common parameters that will be configured during installation and
+upgrade.
 
 For a full list of the parameters that can be configured, see the [values.yaml](values.yaml) file.
 
-> **Tip**: To list all releases, use the command `helm list`
+**TIP:** To list all releases, use the command `helm list`
 
 
 ## Uninstalling the Chart
@@ -42,7 +42,7 @@ the release.
 
 ## Configuration
 
-This table lists commonly-configured parameters of the agent-group chart and their default values.
+This table lists commonly configured parameters of the `agent-group` chart and their default values.
 
 | Parameter             | Default                                  | Description                                                                                                              |
 | --------------------- | ---------------------------------------- | ------------------------------------------------------------------------------------------------------------------------ |
