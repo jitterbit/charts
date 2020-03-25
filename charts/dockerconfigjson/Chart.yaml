@@ -1,13 +1,15 @@
 apiVersion: v1
-name: agent-group
-version: 1.0.2
-appVersion: 10
-description: Jitterbit Agent Group
+name: dockerconfigjson
+version: 1.0.0
+description: .dockerconfigjson
 home: https://github.com/jitterbit/charts
 icon: https://raw.githubusercontent.com/jitterbit/charts/master/logos/jitterbit-logo-stacked-rgb.png
 keywords:
-  - jitterbit
-  - agent
-  - group
+  - docker
+  - config
+  - cfg
+  - json
+  - dockerconfigjson
+  - dockercfg
 sources:
   - https://github.com/jitterbit/charts

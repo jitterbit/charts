@@ -1,0 +1,10 @@
+imageCredentials:
+  - registry: https://index.docker.io/v1/
+    username: my-docker-hub-username
+    accessToken: my-docker-hub-access-token-or-password
+  - registry: https://registry.jitterbit.com/docker/v1/
+    username: my-jitterbit-docker-hub-username
+    accessToken: my-jitterbit-docker-hub-access-token-or-password
+  - registry: https://gcr.io/v1/
+    username: my-gcr-docker-hub-username
+    accessToken: my-gcr-docker-hub-access-token-or-password

@@ -1,7 +1,15 @@
-# Patterns for git to ignore.
+# Patterns to ignore when building packages.
 # This supports shell glob matching, relative path matching, and
 # negation (prefixed with !). Only one pattern per line.
 .DS_Store
+# Common VCS dirs
+.git/
+.gitignore
+.bzr/
+.bzrignore
+.hg/
+.hgignore
+.svn/
 # Common backup files
 *.swp
 *.bak
@@ -13,5 +21,8 @@
 .vscode/
 *.tmproj
 
-# Auto-generated JSON values schemas
-*.schema.json
+# Testing directory
+ci/
+
+# YAML values schema
+*.schema.yaml

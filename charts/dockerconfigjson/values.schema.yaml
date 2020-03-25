@@ -1,0 +1,31 @@
+$schema: http://json-schema.org/draft-07/schema#
+title: .dockerconfigjson Configuration
+description: dockerconfigjson chart configuration
+type: object
+additionalProperties: false
+required:
+  - imageCredentials
+properties:
+  imageCredentials:
+    description: List of .dockerconfigjson configurations
+    type: array
+    additionalItems: false
+    minItems: 1
+    uniqueItems: true
+    items:
+      description: .dockerconfigjson configuration
+      type: object
+      additionalProperties: false
+      required:
+        - username
+        - accessToken
+      properties:
+        registry:
+          description: Docker registry
+          type: string
+        username:
+          description: Docker user's username
+          type: string
+        accessToken:
+          description: Docker user's access token (recommened) or password
+          type: string

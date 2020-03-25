@@ -1,0 +1,3 @@
+imageCredentials:
+  - username: my-docker-hub-username
+    accessToken: my-docker-hub-access-token-or-password
