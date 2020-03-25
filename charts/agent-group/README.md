@@ -46,7 +46,7 @@ Parameter | Description | Default
 `image.digest` | The image digest to pull | `nil` You must provide a digest or a tag
 `agent.registerjson` | The agent group's register.json file | `nil`
 `agent.jitterbitconf` | The agent group's jitterbit.conf file | `{}`
-`hpa.enable` | Enable/disable the Horizontal Pod Autoscaler | `true`
+`hpa.enabled` | Enable/disable the Horizontal Pod Autoscaler | `true`
 `hpa.minReplicas` | If `hpa.enabled` is `true`, set minimum number of replicas | `1`
 `hpa.maxReplicas` | If `hpa.enabled` is `true`, set maximum number of replicas | `1`
 `hpa.metrics` | If `hpa.enabled` is `true`, scale based on these metrics | `{...}` See the [values.yaml](values.yaml) file
