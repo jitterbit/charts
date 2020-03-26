@@ -13,6 +13,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v1
 
+      - name: Bundle all of the charts
+        run: |
+          ./bundle.sh
+
       - name: Configure git
         run: |
           git config user.name "$GITHUB_ACTOR"

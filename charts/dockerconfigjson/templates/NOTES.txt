@@ -1,0 +1,13 @@
+Your .dockerconfigjson secret has been created. You can now reference it in your Pod specs like:
+```
+imagePullSecrets:
+  - name: dockerconfigjson
+```
+
+See the Kubernetes docs for more info:
+https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/#create-a-pod-that-uses-your-secret
+
+{{/*
+  Test required values
+*/}}
+{{- if include "dockerconfigjson.required" . -}}{{- end -}}

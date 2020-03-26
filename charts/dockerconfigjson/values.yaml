@@ -1,0 +1,9 @@
+# Default values for dockerconfigjson.
+
+imageCredentials:
+    # image.registry is the Docker registry
+  - registry: https://index.docker.io/v1/
+    # image.username is the Docker user's username
+    username: ""
+    # image.accessToken is the Docker user's access token (recommened) or password
+    accessToken: ""
