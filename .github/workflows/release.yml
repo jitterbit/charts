@@ -13,6 +13,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v1
 
+      - name: Install yq via snap
+        run: |
+          snap install yq
+          yq --version
+
       - name: Bundle all of the charts
         run: |
           ./bundle.sh
