@@ -15,7 +15,7 @@ jobs:
 
       - name: Install yq via snap
         run: |
-          snap install yq
+          sudo snap install yq
           yq --version
 
       - name: Bundle all of the charts
