@@ -16,9 +16,12 @@ properties:
   metadata:
     description: Chart metadata
     type: object
+  nameOverride:
+    description: Override the name of resources
+    type: string
   image:
     description: Docker image configuration
-    $ref: '#/definitions/image'
+    $ref: "#/definitions/image"
   agent:
     description: Agent Group specific configuration
     type: object
@@ -75,19 +78,19 @@ properties:
           - "null"
   hpa:
     description: Horizontal pod autoscaler configuration
-    $ref: '#/definitions/hpa'
+    $ref: "#/definitions/hpa"
   replicas:
     description: Number of replicas set if the horizontal pod autoscaler is disabled or malfunctioning
-    $ref: '#/definitions/replicas'
+    $ref: "#/definitions/replicas"
   resources:
     description: Upper- and lower-bounded resource constraints of the containers
-    $ref: '#/definitions/resources'
+    $ref: "#/definitions/resources"
   revisionHistoryLimit:
     description: Number of old replica sets to store in case of the need to rollback
-    $ref: '#/definitions/revisionHistoryLimit'
+    $ref: "#/definitions/revisionHistoryLimit"
   affinity:
     description: Pod affinity and anti-affinity definitions
-    $ref: '#/definitions/affinity'
+    $ref: "#/definitions/affinity"
   env:
     description: List of additional environment variables that may be specified in the container
-    $ref: '#/definitions/env'
+    $ref: "#/definitions/env"
