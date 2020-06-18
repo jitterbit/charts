@@ -79,7 +79,7 @@ affinity:
               release: "{{ .Release.Name }}"
 
 # env is a list of extra environment variables that may be specified in the container
-env:
+env: []
 #  - name: CATALINA_OPTS
 #    value: -Xms512m -Xmx1024m
 #  - name: ENV_VAR_NAME
