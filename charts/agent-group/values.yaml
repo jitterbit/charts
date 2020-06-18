@@ -80,8 +80,8 @@ affinity:
 
 # env is a list of extra environment variables that may be specified in the container
 env:
-  - name: CATALINA_OPTS
-    value: -XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap
+#  - name: CATALINA_OPTS
+#    value: -Xms512m -Xmx1024m
 #  - name: ENV_VAR_NAME
 #    value: "ENV_VAR_VALUE"
 #  - name: SECRET_PASSWORD
