@@ -3,6 +3,23 @@ entries:
   agent-group:
   - apiVersion: v1
     appVersion: "10"
+    created: "2020-06-23T21:51:12.148958713Z"
+    description: Jitterbit Agent Group
+    digest: ee8a78ea816587d636967e7cba224432d69b6634442469949789d698f2934178
+    home: https://github.com/jitterbit/charts
+    icon: https://raw.githubusercontent.com/jitterbit/charts/master/logos/jitterbit-logo-stacked-rgb.png
+    keywords:
+    - jitterbit
+    - agent
+    - group
+    name: agent-group
+    sources:
+    - https://github.com/jitterbit/charts
+    urls:
+    - https://github.com/jitterbit/charts/releases/download/agent-group-1.0.4/agent-group-1.0.4.tgz
+    version: 1.0.4
+  - apiVersion: v1
+    appVersion: "10"
     created: "2020-06-08T17:58:28.49271266Z"
     description: Jitterbit Agent Group
     digest: 95f8d152b02775a50b98c87d257604e885afb671ad2416c934834072b7b6cf08
