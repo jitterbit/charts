@@ -11,6 +11,8 @@ required:
   - resources
   - revisionHistoryLimit
   - affinity
+  - readinessProbe
+  - livenessProbe
   - env
 properties:
   metadata:
@@ -91,6 +93,18 @@ properties:
   affinity:
     description: Pod affinity and anti-affinity definitions
     $ref: "#/definitions/affinity"
+  readinessProbe:
+    description: >
+      Periodic probe of container service readiness.
+      Container will be removed from service endpoints if the probe fails.
+      More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+    $ref: "#/definitions/probe"
+  livenessProbe:
+    description: >
+      Periodic probe of container liveness.
+      Container will be restarted if the probe fails.
+      More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+    $ref: "#/definitions/probe"
   env:
     description: List of additional environment variables that may be specified in the container
     $ref: "#/definitions/env"

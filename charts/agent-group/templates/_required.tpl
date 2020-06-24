@@ -19,4 +19,6 @@
   {{- required "resources is required!" .Values.resources -}}
   {{- required "revisionHistoryLimit is required!" .Values.revisionHistoryLimit -}}
   {{- required "affinity is required!" .Values.affinity -}}
+  {{- required "readinessProbe is required!" .Values.readinessProbe -}}
+  {{- required "livenessProbe is required!" .Values.livenessProbe -}}
 {{- end -}}
