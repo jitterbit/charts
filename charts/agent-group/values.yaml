@@ -78,6 +78,7 @@ affinity:
               app: '{{ template "agent-group.name" . }}'
               release: "{{ .Release.Name }}"
 
+# readinessProbe is the container's readinessProbe definition
 readinessProbe:
   httpGet:
     scheme: HTTP
@@ -86,6 +87,8 @@ readinessProbe:
   initialDelaySeconds: 90
   periodSeconds: 30
   timeoutSeconds: 5
+
+# livenessProbe is the container's livenessProbe definition
 livenessProbe:
   httpGet:
     scheme: HTTP
