@@ -58,17 +58,10 @@ spec:
           env:
             {{- toYaml .Values.env | trimSuffix "\n" | nindent 12 }}
           {{- end }}
-          readinessProbe: &probe
-            httpGet:
-              scheme: HTTP
-              port: http-healthz
-              path: /
-            initialDelaySeconds: 90
-            periodSeconds: 30
-            timeoutSeconds: 5
+          readinessProbe:
+            {{- toYaml .Values.readinessProbe | trimSuffix "\n" | nindent 12 }}
           livenessProbe:
-            <<: *probe
-            initialDelaySeconds: 300
+            {{- toYaml .Values.livenessProbe | trimSuffix "\n" | nindent 12 }}
           resources:
             {{- toYaml .Values.resources | trimSuffix "\n" | nindent 12 }}
           volumeMounts:
