@@ -36,13 +36,13 @@ hpa:
         name: cpu
         target:
           type: Utilization
-          averageUtilization: 50
+          averageUtilization: 80
     - type: Resource
       resource:
         name: memory
         target:
           type: Utilization
-          averageUtilization: 50
+          averageUtilization: 80
 #    - type: Pods
 #      pods:
 #        metricName: transactions-processed-per-second
@@ -57,7 +57,7 @@ resources:
     cpu: 500m
     memory: 2Gi
   limits:
-    cpu: "1"
+    cpu: 1250m
     memory: 4Gi
 
 # revisionHistoryLimit is the number of old replica sets to store in case of the need to rollback
