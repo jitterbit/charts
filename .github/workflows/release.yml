@@ -16,7 +16,7 @@ jobs:
       - name: Install yq via snap
         run: |
           sudo snap info yq
-          sudo snap install yq --channel=3.4.1/stable --classic
+          sudo snap install --channel=v3 yq
           yq --version
 
       - name: Bundle all of the charts
