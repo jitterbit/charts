@@ -36,13 +36,13 @@ hpa:
         name: cpu
         target:
           type: Utilization
-          averageUtilization: 50
+          averageUtilization: 80
     - type: Resource
       resource:
         name: memory
         target:
           type: Utilization
-          averageUtilization: 50
+          averageUtilization: 80
 #    - type: Pods
 #      pods:
 #        metricName: transactions-processed-per-second
@@ -54,10 +54,10 @@ replicas: 1
 # resources are the upper- and lower-bounded resource constraints of the containers
 resources:
   requests:
-    cpu: 250m
+    cpu: 500m
     memory: 2Gi
   limits:
-    cpu: 500m
+    cpu: 1250m
     memory: 4Gi
 
 # revisionHistoryLimit is the number of old replica sets to store in case of the need to rollback
