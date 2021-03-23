@@ -15,6 +15,7 @@ jobs:
 
       - name: Install yq via snap
         run: |
+          sudo snap info yq
           sudo snap install yq
           yq --version
 
