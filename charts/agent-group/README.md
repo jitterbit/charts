@@ -56,8 +56,8 @@ This table lists commonly configured parameters of the `agent-group` chart and t
 | `hpa.maxReplicas`     | `1`                                      | If `hpa.enabled` is `true`, set maximum number of replicas                                                               |
 | `hpa.metrics`         | `{...}`                                  | If `hpa.enabled` is `true`, scale based on these metrics. See the [values.yaml](values.yaml) file.                       |
 | `replicas`            | `1`                                      | If `hpa.enabled` is `false` or the Horizontal Pod Autoscaler is malfunctioning, use to set the static number of replicas |
-| `resources`           | `{requests: {cpu: 50m, memory: 0.75Gi},` | Resources allocated for the container                                                                                    |
-|                       | `limits: {cpu: 250m, memory: 1Gi}}`      | Resources allocated for the container                                                                                    |
+| `resources`           | `{requests: {cpu: 500m, memory: 2Gi},` | Resources allocated for the container                                                                                    |
+|                       | `limits: {cpu: 1250m, memory: 4Gi}}`      | Resources allocated for the container                                                                                    |
 
 Specify the values for the parameters in a YAML file that can be provided while installing or upgrading the chart.
 For example:
