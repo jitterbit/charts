@@ -109,3 +109,6 @@ env: []
 #      secretKeyRef:
 #        name: mysecret
 #        key: password
+
+# node tolerations to allow (but do not require) the pods to schedule onto nodes with matching taints.
+tolerations: []
