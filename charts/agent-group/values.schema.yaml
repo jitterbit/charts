@@ -111,4 +111,4 @@ properties:
     $ref: "#/definitions/env"
   tolerations:
     description: Pod tolerations to node tains
-    $ref: "#/definitions/toleration"
+    $ref: "#/definitions/tolerations"
