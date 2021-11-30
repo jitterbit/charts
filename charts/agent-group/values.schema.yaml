@@ -110,5 +110,5 @@ properties:
     description: List of additional environment variables that may be specified in the container
     $ref: "#/definitions/env"
   tolerations:
-    description: Pod tolerations to node tains
+    description: Pod tolerations to node taints
     $ref: "#/definitions/tolerations"
