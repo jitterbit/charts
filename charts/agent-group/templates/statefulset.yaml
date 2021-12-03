@@ -92,3 +92,7 @@ spec:
         - name: '{{ template "agent-group.name" . }}'
       affinity:
         {{- tpl (toYaml .Values.affinity) . | trimSuffix "\n" | nindent 8 }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}

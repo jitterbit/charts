@@ -100,3 +100,11 @@ definitions:
     uniqueItems: true
     items:
       $ref: "https://raw.githubusercontent.com/instrumenta/kubernetes-json-schema/master/v1.12.8-standalone-strict/_definitions.json#/definitions/io.k8s.api.core.v1.EnvVar"
+  tolerations:
+    description: Pod tolerations to node tains
+    type: array
+    additionalItems: false
+    minItems: 0
+    uniqueItems: true
+    items:
+      $ref: "https://raw.githubusercontent.com/instrumenta/kubernetes-json-schema/master/v1.12.8-standalone-strict/_definitions.json#/definitions/io.k8s.api.core.v1.Toleration"
