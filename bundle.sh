@@ -17,7 +17,7 @@ for chart in charts/*; do
     echo "File $JSON_SCHEMA does not exist"
     touch "$JSON_SCHEMA"
   fi
-  yq eval-all --tojson "select(fileIndex == 0) * select(filename == \"$YAML_SCHEMA\")" definitions.schema.yaml "${chart}"/values.schema.yaml > "$JSON_SCHEMA"
+  yq eval-all -o=json "select(fileIndex == 0) * select(filename == \"$YAML_SCHEMA\")" definitions.schema.yaml "${chart}"/values.schema.yaml > "$JSON_SCHEMA"
 
 done
 
