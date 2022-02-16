@@ -16,7 +16,7 @@ entries:
     sources:
     - https://github.com/jitterbit/charts
     urls:
-    - https://jitterbit.github.io/charts/agent-group-1.0.7.tgz
+    - https://github.com/jitterbit/charts/releases/download/agent-group-1.0.7/agent-group-1.0.7.tgz
     version: 1.0.7
   - apiVersion: v1
     appVersion: "10"
