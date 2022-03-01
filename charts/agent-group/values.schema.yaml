@@ -16,6 +16,9 @@ required:
   - env
   - tolerations
 properties:
+  global:
+    description: Global
+    type: object
   metadata:
     description: Chart metadata
     type: object
