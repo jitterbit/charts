@@ -4,7 +4,7 @@ image:
   # image.repository is the Docker image's repository
   repository: jitterbit/agent
   # image.tag is the Docker image's tag
-  tag:
+  tag: latest
   # image.digest is the Docker image's digest
   digest:
   # image.pullPolicy is the Docker image's pull policy

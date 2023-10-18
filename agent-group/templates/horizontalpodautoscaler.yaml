@@ -1,0 +1,25 @@
+{{ if .Values.hpa.enabled -}}
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: '{{ template "agent-group.name" . }}'
+  annotations:
+    description: "{{ .Chart.Description }}"
+  labels:
+    app: '{{ template "agent-group.name" . }}'
+    chart: '{{ template "agent-group.chart" . }}'
+    component: agent-group
+    release: "{{ .Release.Name }}"
+    heritage: "{{ .Release.Service }}"
+spec:
+  minReplicas: {{ .Values.hpa.minReplicas }}
+  maxReplicas: {{ .Values.hpa.maxReplicas }}
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: StatefulSet
+    name: '{{ template "agent-group.name" . }}'
+  {{- if .Values.hpa.metrics }}
+  metrics:
+    {{- toYaml .Values.hpa.metrics | trimSuffix "\n" | nindent 4 }}
+  {{- end }}
+{{- end }}
