@@ -6,6 +6,9 @@ additionalProperties: false
 required:
   - imageCredentials
 properties:
+  nameOverride:
+    description: The nameOverride parameter used change name of secret created
+    type: string
   imageCredentials:
     description: List of .dockerconfigjson configurations
     type: array
