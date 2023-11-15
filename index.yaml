@@ -156,6 +156,25 @@ entries:
     version: 1.0.1
   dockerconfigjson:
   - apiVersion: v1
+    created: "2023-11-15T20:32:57.207495143Z"
+    description: .dockerconfigjson
+    digest: 3c61933fc0274d5416e7966760016d56bd72840911c1494b55cf2ec525bca0fe
+    home: https://github.com/jitterbit/charts
+    icon: https://raw.githubusercontent.com/jitterbit/charts/master/logos/jitterbit-logo-stacked-rgb.png
+    keywords:
+    - docker
+    - config
+    - cfg
+    - json
+    - dockerconfigjson
+    - dockercfg
+    name: dockerconfigjson
+    sources:
+    - https://github.com/jitterbit/charts
+    urls:
+    - https://github.com/jitterbit/charts/releases/download/dockerconfigjson-1.0.1/dockerconfigjson-1.0.1.tgz
+    version: 1.0.1
+  - apiVersion: v1
     created: "2020-03-27T17:57:08.831975316Z"
     description: .dockerconfigjson
     digest: 58bf5474a7865830c7d40cbd85f16e051b708f3980215061c90471a90c7e2ea7
@@ -174,4 +193,4 @@ entries:
     urls:
     - https://github.com/jitterbit/charts/releases/download/dockerconfigjson-1.0.0/dockerconfigjson-1.0.0.tgz
     version: 1.0.0
-generated: "2020-03-11T20:56:40.715008742Z"
+generated: "2023-11-15T20:32:57.207537222Z"
