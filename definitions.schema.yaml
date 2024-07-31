@@ -108,3 +108,5 @@ definitions:
     uniqueItems: true
     items:
       $ref: "https://raw.githubusercontent.com/instrumenta/kubernetes-json-schema/master/v1.12.8-standalone-strict/_definitions.json#/definitions/io.k8s.api.core.v1.Toleration"
+#volume
+  #storage

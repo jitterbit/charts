@@ -20,16 +20,18 @@ spec:
     matchLabels:
       app: '{{ template "agent-group.name" . }}'
       release: "{{ .Release.Name }}"
-#  volumeClaimTemplates:
-#    - metadata:
-#        name: '{{ template "agent-group.name" . }}'
-#      spec:
-#        storageClassName: {{ template "agent-group.name" . }}
-#        accessModes:
-#          - ReadWriteOnce
-#        resources:
-#          requests:
-#            storage: 1Gi
+  volumeClaimTemplates:
+    - metadata:
+        name: '{{ template "agent-group.name" .}}-vol'
+      spec:
+        {{- if .Values.volume.storageClassName }}
+        storageClassName: {{ .Values.volume.storageClassName }}
+        {{- end }}
+        accessModes:
+          - ReadWriteOnce
+        resources:
+          requests:
+            storage: {{ .Values.volume.storage }}
   template:
     metadata:
       {{- if or .Values.agent.jitterbitconf .Values.agent.registerjson }}
@@ -46,6 +48,16 @@ spec:
         release: "{{ .Release.Name }}"
     spec:
       terminationGracePeriodSeconds: 3600 # 1 hour
+#      initContainers:
+#        - name: "{{ .Chart.Name }}-init"
+#          image: {{ .Values.image.repository }}{{ if .Values.image.digest }}@{{ .Values.image.digest }}{{ else }}:{{ .Values.image.tag }}{{ end }}
+#          command: ["/bin/bash", "/scripts/init-script.sh"]
+#          volumeMounts:
+#          - name: jitterbit-init-script-sh
+#            mountPath: /scripts/init-script.sh
+#            subPath: init-script.sh
+#          - name: jitterbit-app-root
+#            mountPath: /data-opt-jitterbit           
       containers:
         - name: "{{ .Chart.Name }}"
           image: {{ .Values.image.repository }}{{ if .Values.image.digest }}@{{ .Values.image.digest }}{{ else }}:{{ .Values.image.tag }}{{ end }}

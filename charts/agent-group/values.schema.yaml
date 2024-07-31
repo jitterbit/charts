@@ -15,6 +15,7 @@ required:
   - livenessProbe
   - env
   - tolerations
+  - volume
 properties:
   global:
     description: Global
@@ -115,3 +116,6 @@ properties:
   tolerations:
     description: Pod tolerations to node taints
     $ref: "#/definitions/tolerations"
+  volume:
+    description: Pod volume
+    $ref: "#/definitions/volume"
