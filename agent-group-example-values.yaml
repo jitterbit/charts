@@ -13,8 +13,8 @@ agent:
   registerjson: {
     cloudUrl: "https://qa-green.jitterbit.com/",
     token: "jb_1c61d793-6a9c-4023-9d11-e79019029eaa",
-    #username: "$00QPmBXxT/EcjPqqDZnubK5L3SWrC+YNFeew1XWEu7E8wZ1TNp5XklGeIt3IQ9n99u",
-    #password: "$006TlYKi7LxBY9npgGm880kWD6QtgcmCkFpJTmsscfPeo=",
+    #username: "$00XXXXXXXXXXXXX",
+    #password: "$00ZZZZZZZZZZZZZ",
     agentGroupId: 198100,
     agentNamePrefix: "auto_%host%",
     deregisterAgentOnDrainstop: false,
@@ -35,8 +35,8 @@ hpa:
 replicas: 1
 
 volume:
-  #storageClassName: gp3
-  storage: 50Gi
+  storageClassName: gp3
+  storage: 10Gi
 
 resources:
   requests:
