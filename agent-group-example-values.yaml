@@ -2,7 +2,7 @@ image:
   # image.repository is the Docker image's repository
   repository: jitterbit/agent
   # image.tag is the Docker image's tag
-  tag: 11.25.0.16
+  tag: 11.29.0.17
   # image.digest is the Docker image's digest
   #digest:
   # image.pullPolicy is the Docker image's pull policy
@@ -23,9 +23,9 @@ agent:
   }
 
   customConfigFiles:
-    httpdMpmConf: "jb-agent-org526233-httpd-mpm.conf"
-    jitterbitAgentConfigProperties: "jb-agent-org526233-jitterbit-agent-config.properties"
-    jitterbitConf: "jb-agent-org526233-jitterbit.conf"
+    httpdMpmConf: "jb-agent-httpd-mpm.conf"
+    jitterbitAgentConfigProperties: "jb-agent-jitterbit-agent-config.properties"
+    jitterbitConf: "jb-agent-jitterbit-11-29-0-17.conf"
 
 hpa:
   enabled: false
@@ -35,8 +35,8 @@ hpa:
 replicas: 1
 
 volume:
-  storageClassName: hostpath
-  storage: 11Gi
+  #storageClassName: gp3
+  storage: 50Gi
 
 resources:
   requests:

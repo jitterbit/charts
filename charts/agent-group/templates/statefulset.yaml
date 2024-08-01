@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: '{{ template "agent-group.name" . }}'
+  name: '{{ .Release.Name }}'
   annotations:
     description: "{{ .Chart.Description }}"
     image-digest: "{{ .Values.image.digest }}"
@@ -106,12 +106,12 @@ spec:
       volumes:
         - name: agent-group-initscript
           configMap:
-            name: {{ template "agent-group.name" . }}-init-script-sh
+            name: {{ .Release.Name }}-init-script-sh
             defaultMode: 0755      
         {{- if .Values.agent.registerjson }}
         - name: agent-group-registerjson
           secret:
-            secretName: {{ template "agent-group.name" . }}-registerjson
+            secretName: '{{ .Release.Name }}-registerjson'
         {{- end }}
         {{- if .Values.agent.customConfigFiles.jitterbitConf }}
         - name: agent-group-jitterbit-conf
