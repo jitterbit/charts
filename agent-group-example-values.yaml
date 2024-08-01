@@ -15,19 +15,24 @@ agent:
     token: "jb_1c61d793-6a9c-4023-9d11-e79019029eaa",
     #username: "$00QPmBXxT/EcjPqqDZnubK5L3SWrC+YNFeew1XWEu7E8wZ1TNp5XklGeIt3IQ9n99u",
     #password: "$006TlYKi7LxBY9npgGm880kWD6QtgcmCkFpJTmsscfPeo=",
-    agentGroupId: "198100",
-    agentNamePrefix: "auto_%ip%_%host%_%guid%",
-    deregisterAgentOnDrainstop: "false",
-    retryCount: "10",
-    retryIntervalSeconds: "5"
-}
+    agentGroupId: 198100,
+    agentNamePrefix: "auto_%host%",
+    deregisterAgentOnDrainstop: false,
+    retryCount: 10,
+    retryIntervalSeconds: 5
+  }
+
+  customConfigFiles:
+    httpdMpmConf: "jb-agent-org526233-httpd-mpm.conf"
+    jitterbitAgentConfigProperties: "jb-agent-org526233-jitterbit-agent-config.properties"
+    jitterbitConf: "jb-agent-org526233-jitterbit.conf"
 
 hpa:
   enabled: false
   minReplicas: 1
   maxReplicas: 10
 
-replicas: 0
+replicas: 1
 
 volume:
   storageClassName: hostpath
@@ -41,13 +46,33 @@ resources:
     cpu: 4000m
     memory: 16Gi
 
+dnsPolicy: ClusterFirst
+dnsConfig:
+  options:  
+  - name: single-request-reopen
+  - name: ndots
+    value: "1"
+
+livenessProbe:
+  httpGet:
+    path: /
+    port: 3000
+    scheme: HTTP
+  initialDelaySeconds: 6000
+  timeoutSeconds: 1
+  periodSeconds: 30
+  successThreshold: 1
+  failureThreshold: 3
+readinessProbe:
+  httpGet:
+    path: /
+    port: 3000
+    scheme: HTTP
+  timeoutSeconds: 1
+  periodSeconds: 30
+  successThreshold: 1
+  failureThreshold: 3
+
 env:
   - name: CATALINA_OPTS
-    value: -Xms2048m -Xmx4096m  
-#  - name: ENV_VAR_NAME
-#    value: "ENV_VAR_VALUE"
-#  - name: SECRET_PASSWORD
-#    valueFrom:
-#      secretKeyRef:
-#        name: mysecret
-#        key: password
+    value: -Xms2048m -Xmx4096m

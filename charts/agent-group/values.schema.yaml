@@ -45,6 +45,7 @@ properties:
             additionalProperties: false
             required:
               - cloudUrl
+              - token              
               - username
               - password
               - agentGroupId
@@ -52,8 +53,11 @@ properties:
               cloudUrl:
                 description: Base URL of the Jitterbit Harmony Cloud
                 type: string
+              token:
+                description: Access token for agent registration
+                type: string                
               username:
-                description: Encrypted username of the Agent Installer user (encrypted using JitterbitUtils)
+                description: Encrypted username of the Agent Installer user (encrypted using JitterbitUtils). Consider use token instead username/password
                 type: string
               password:
                 description: Encrypted password of the Agent Installer user (encrypted using JitterbitUtils)
@@ -78,11 +82,6 @@ properties:
                 minimum: 5
                 maximum: 600
           - type: "null"
-      jitterbitconf:
-        description: Agent group's jitterbit.conf file
-        type:
-          - string
-          - "null"
   hpa:
     description: Horizontal pod autoscaler configuration
     $ref: "#/definitions/hpa"
@@ -119,3 +118,7 @@ properties:
   volume:
     description: Pod volume
     $ref: "#/definitions/volume"
+  dnsPolicy:
+    type: string
+    dnsConfig:
+    type: object    

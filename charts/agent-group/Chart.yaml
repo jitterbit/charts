@@ -1,7 +1,7 @@
 apiVersion: v1
 name: agent-group
-version: 1.0.9
-appVersion: 10
+version: 1.0.10
+appVersion: 11
 description: Jitterbit Agent Group
 home: https://github.com/jitterbit/charts
 icon: https://raw.githubusercontent.com/jitterbit/charts/master/logos/jitterbit-logo-stacked-rgb.png

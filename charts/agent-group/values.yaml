@@ -19,12 +19,25 @@ agent:
 #    agentGroupId: 6282
 #    agentNamePrefix: "%host%"
 #    deregisterAgentOnDrainstop: true
+  
+  # deprecated, use customConfigFiles.jitterbitConf
   # agent.jitterbitconf is the agent group's jitterbit.conf file
-  jitterbitconf:
 
+  # Custom agent configuration files (local path)
+  # kubectl create configmap configmap-name-for-jitterbit.conf -n yournamespace --from-file=yourconfiglocation/jitterbit.conf
+  # kubectl create configmap configmap-name-for-jitterbit-agent-config.properties -n yournamespace --from-file=yourconfiglocation/jitterbit-agent-config.properties
+  # kubectl create configmap configmap-name-for-httpd-mpm.conf -n yournamespace --from-file=yourconfiglocation/httpd-mpm.conf
+  customConfigFiles: 
+    # ConfigMapName for to /opt/jitterbit/apache/conf/extra/httpd-mpm.conf
+    httpdMpmConf: 
+    # ConfigMapName to /opt/jitterbit/Resources/jitterbit-agent-config.properties
+    jitterbitAgentConfigProperties: 
+    # ConfigMapName to /opt/jitterbit/jitterbit.conf
+    jitterbitConf:
+    
 hpa:
   # hpa.enabled is a flag to enable/disable the Horizontal Pod Autoscaler
-  enabled: true
+  enabled: false
   # hpa.minReplicas is the minimum number of replicas
   minReplicas: 1
   # hpa.maxReplicas is the maximum number of replicas
@@ -101,6 +114,15 @@ livenessProbe:
   initialDelaySeconds: 300
   periodSeconds: 30
   timeoutSeconds: 5
+
+#Set DNS policy for the pod. Defaults to "ClusterFirst". 
+#Valid values are 'ClusterFirstWithHostNet', 'ClusterFirst', 'Default' or 'None'. 
+#DNS parameters given in DNSConfig will be merged with the policy selected with DNSPolicy. 
+#To have DNS options set along with hostNetwork, you have to specify DNS policy explicitly to 'ClusterFirstWithHostNet'.
+#dnsPolicy: 
+
+#Specifies the DNS parameters of a pod. Parameters specified here will be merged to the generated DNS configuration based on DNSPolicy.
+#dnsConfig: {}
 
 # env is a list of extra environment variables that may be specified in the container
 env: []
