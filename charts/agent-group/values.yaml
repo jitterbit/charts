@@ -12,29 +12,35 @@ image:
 
 agent:
   # agent.registerjson is the agent group's register.json file
-  registerjson: {}
+  registerjson: {
 #    cloudUrl: https://na-east.jitterbit.com
-#    username: $00lAuva91/rNxAaoQ+bC3pdtq+dXD9CLw9YdFGxcHLXI3Fhgf6JXQp3dDnIVKZE89xzwREjV/KDqINtTr8XQ/w==
-#    password: $00RIOD/BqGlQ1ack56p2GKG8vXJlpfAnbLxyUs5GqH8=
+#    username: $00xxxxxxxxxxxxxxxxx==
+#    password: $00yyyyyyyyyyyyyyyyy=
 #    agentGroupId: 6282
 #    agentNamePrefix: "%host%"
 #    deregisterAgentOnDrainstop: true
+  }
   
   # deprecated, use customConfigFiles.jitterbitConf
   # agent.jitterbitconf is the agent group's jitterbit.conf file
 
-  # Custom agent configuration files (local path)
-  # kubectl create configmap configmap-name-for-jitterbit.conf -n yournamespace --from-file=yourconfiglocation/jitterbit.conf
-  # kubectl create configmap configmap-name-for-jitterbit-agent-config.properties -n yournamespace --from-file=yourconfiglocation/jitterbit-agent-config.properties
-  # kubectl create configmap configmap-name-for-httpd-mpm.conf -n yournamespace --from-file=yourconfiglocation/httpd-mpm.conf
-  customConfigFiles: 
-    # ConfigMapName for to /opt/jitterbit/apache/conf/extra/httpd-mpm.conf
-    httpdMpmConf: 
-    # ConfigMapName to /opt/jitterbit/Resources/jitterbit-agent-config.properties
-    jitterbitAgentConfigProperties: 
-    # ConfigMapName to /opt/jitterbit/jitterbit.conf
-    jitterbitConf:
-    
+# Custom agent configuration files
+# kubectl create configmap configmap-name-for-jitterbit.conf -n yournamespace --from-file=yourconfiglocation/jitterbit.conf  
+  customFiles:
+#    - name: httpd-mpm-conf
+#      destination: /opt/jitterbit/apache/conf/extra/httpd-mpm.conf
+#      configMapName: jb-agent-httpd-mpm.conf
+#      fileName: httpd-mpm.conf
+#    - name: jitterbit-agent-config-properties
+#      destination: /opt/jitterbit/Resources/jitterbit-agent-config.properties
+#      configMapName: jb-agent-jitterbit-agent-config.properties
+#      fileName: jitterbit-agent-config.properties
+#    - name: jitterbit-conf
+#      destination: /opt/jitterbit/jitterbit.conf
+#      configMapName: jb-agent-jitterbit-11-29-0-17.conf
+#      fileName: jitterbit.conf
+
+  
 hpa:
   # hpa.enabled is a flag to enable/disable the Horizontal Pod Autoscaler
   enabled: false
@@ -138,3 +144,5 @@ env: []
 
 # node tolerations to allow (but do not require) the pods to schedule onto nodes with matching taints.
 tolerations: []
+
+

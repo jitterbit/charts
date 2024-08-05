@@ -50,7 +50,7 @@ This table lists commonly configured parameters of the `agent-group` chart and t
 | `image.tag`           | `nil`                                    | The image tag to pull. You must provide a digest or a tag (digest takes precedence).                                     |
 | `image.digest`        | `nil`                                    | The image digest to pull. You must provide a digest or a tag.                                                            |
 | `agent.registerjson`  | `nil`                                    | The agent group's `register.json` file                                                                                   |
-| `agent.jitterbitconf` | `{}`                                     | The agent group's `jitterbit.conf` file                                                                                  |
+| `agent.customFiles`   | `[]`                                     | List of custom files to be included with the agent. Each file must contain properties like name, destination, and configMapName. |
 | `hpa.enabled`         | `true`                                   | Enable (or disable) the Horizontal Pod Autoscaler                                                                        |
 | `hpa.minReplicas`     | `1`                                      | If `hpa.enabled` is `true`, set minimum number of replicas                                                               |
 | `hpa.maxReplicas`     | `1`                                      | If `hpa.enabled` is `true`, set maximum number of replicas                                                               |
@@ -58,6 +58,10 @@ This table lists commonly configured parameters of the `agent-group` chart and t
 | `replicas`            | `1`                                      | If `hpa.enabled` is `false` or the Horizontal Pod Autoscaler is malfunctioning, use to set the static number of replicas |
 | `resources`           | `{requests: {cpu: 500m, memory: 2Gi},` | Resources allocated for the container                                                                                    |
 |                       | `limits: {cpu: 1250m, memory: 4Gi}}`      | Resources allocated for the container                                                                                    |
+| `env`                           | `[]`                                     | List of additional environment variables that may be specified in the container                                           |
+| `volume.storageClassName`       | `nil`                                    | The storage class name for the volume                                                                                   |
+| `volume.storage`                | `50Gi`                                   | The size of the volume to allocate                                                                                        |
+
 
 Specify the values for the parameters in a YAML file that can be provided while installing or upgrading the chart.
 For example:

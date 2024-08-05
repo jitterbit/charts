@@ -82,6 +82,30 @@ properties:
                 minimum: 5
                 maximum: 600
           - type: "null"
+      customFiles:
+              type: array
+              items:
+                type: object
+                properties:
+                  name:
+                    type: string
+                    description: 
+                  destination:
+                    type: string
+                    description: File destination, like /opt/jitterbit/jitterbit.conf
+                  configMapName:
+                    type: string
+                    description: ConfigMap name where file is saved
+                  fileName:
+                    type: string
+                    description: File name like jitterbit.conf
+                required:
+                  - name
+                  - destination
+                  - configMapName
+                  - fileName
+          required:
+            - registerjson
   hpa:
     description: Horizontal pod autoscaler configuration
     $ref: "#/definitions/hpa"

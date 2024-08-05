@@ -85,23 +85,11 @@ spec:
               subPath: register.json
               readOnly: true
             {{- end }}
-            {{- if .Values.agent.customConfigFiles.jitterbitConf }}
-            - name: agent-group-jitterbit-conf
-              mountPath: /opt/jitterbit/jitterbit.conf
-              subPath: jitterbit.conf
-              readOnly: true
-            {{- end }}
-            {{- if .Values.agent.customConfigFiles.jitterbitAgentConfigProperties }}            
-            - name: agent-group-jitterbit-agent-config-properties
-              mountPath: /opt/jitterbit/Resources/jitterbit-agent-config.properties
-              subPath: jitterbit-agent-config.properties
-              readOnly: true
-            {{- end }}
-            {{- if .Values.agent.customConfigFiles.httpdMpmConf }}            
-            - name: agent-group-httpd-mpm-conf
-              mountPath: /opt/jitterbit/apache/conf/extra/httpd-mpm.conf
-              subPath: httpd-mpm.conf
-              readOnly: true
+            {{- range $v := .Values.agent.customFiles }}
+            - name: {{ $v.name }}
+              mountPath: {{ $v.destination }}
+              subPath: {{ $v.fileName }}
+              readOnly: false
             {{- end }}
       volumes:
         - name: agent-group-initscript
@@ -113,21 +101,11 @@ spec:
           secret:
             secretName: '{{ .Release.Name }}-registerjson'
         {{- end }}
-        {{- if .Values.agent.customConfigFiles.jitterbitConf }}
-        - name: agent-group-jitterbit-conf
+        {{- range $v := .Values.agent.customFiles }}
+        - name: {{ $v.name }}
           configMap:
-            name:  {{ .Values.agent.customConfigFiles.jitterbitConf }}
-        {{- end }}
-        {{- if .Values.agent.customConfigFiles.jitterbitAgentConfigProperties }}
-        - name: agent-group-jitterbit-agent-config-properties
-          configMap:
-            name:  {{ .Values.agent.customConfigFiles.jitterbitAgentConfigProperties }}
-        {{- end }}
-        {{- if .Values.agent.customConfigFiles.httpdMpmConf }}
-        - name: agent-group-httpd-mpm-conf
-          configMap:
-            name:  {{ .Values.agent.customConfigFiles.httpdMpmConf }}
-        {{- end }}
+            name: {{ $v.configMapName }}
+        {{- end }}        
       imagePullSecrets:
         - name: '{{ template "agent-group.name" . }}'
       affinity:

@@ -22,10 +22,19 @@ agent:
     retryIntervalSeconds: 5
   }
 
-  #customConfigFiles:
-  #  httpdMpmConf: "jb-agent-httpd-mpm.conf"
-  #  jitterbitAgentConfigProperties: "jb-agent-jitterbit-agent-config.properties"
-  #  jitterbitConf: "jb-agent-jitterbit-11-29-0-17.conf"
+  customFiles:
+    - name: httpd-mpm-conf
+      destination: /opt/jitterbit/apache/conf/extra/httpd-mpm.conf
+      configMapName: jb-agent-httpd-mpm.conf
+      fileName: httpd-mpm.conf
+    - name: jitterbit-agent-config-properties
+      destination: /opt/jitterbit/Resources/jitterbit-agent-config.properties
+      configMapName: jb-agent-jitterbit-agent-config.properties
+      fileName: jitterbit-agent-config.properties
+    - name: jitterbit-conf
+      destination: /opt/jitterbit/jitterbit.conf
+      configMapName: jb-agent-jitterbit-11-29-0-17.conf
+      fileName: jitterbit.conf
 
 hpa:
   enabled: false
@@ -35,8 +44,8 @@ hpa:
 replicas: 1
 
 volume:
-  storageClassName: gp3
-  storage: 10Gi
+  #storageClassName: gp3
+  storage: 15Gi
 
 resources:
   requests:
