@@ -2,7 +2,7 @@
 Jitterbit Agent Group is spinning up now.
 Watch the progress by running:
 
-    kubectl -n {{ .Release.Namespace }} get po --watch | grep {{ template "agent-group.name" . }}
+    kubectl -n {{ .Release.Namespace }} get po --watch | grep '{{ .Release.Name }}'
 
 No further action should be required.
 
