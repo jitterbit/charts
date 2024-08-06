@@ -111,9 +111,9 @@ spec:
         - name: {{ $v.name }}
           configMap:
             name: {{ $v.configMapName }}
-            #{{- if $v.defaultMode }}
-            #defaultMode: {{ $v.defaultMode }}
-            #{{- end }}            
+            {{- if $v.defaultMode }}
+            defaultMode: {{ $v.defaultMode }}
+            {{- end }}            
           {{- end }}
       imagePullSecrets:
         - name: '{{ template "agent-group.name" . }}'

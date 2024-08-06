@@ -62,6 +62,33 @@ This table lists commonly configured parameters of the `agent-group` chart and t
 | `volume.storageClassName`       | `nil`                                    | The storage class name for the volume                                                                                   |
 | `volume.storage`                | `50Gi`                                   | The size of the volume to allocate                                                                                        |
 
+To put your custom files on the installation, you need to create one configmap per file and fill in the structure 'agent. custom files' on your values.yaml
+
+Example to create a configmap from file:
+```bash
+$ kubectl create configmap configmap-name-for-jitterbit.conf -n yournamespace --from-file=yourconfiglocation/jitterbit.conf  
+```
+
+Exemple to fill the values.yaml
+```
+...
+  customFiles:
+    - name: httpd-mpm-conf
+      destination: /opt/jitterbit/apache/conf/extra/httpd-mpm.conf
+      configMapName: jb-agent-httpd-mpm.conf
+      fileName: httpd-mpm.conf
+    - name: jitterbit-agent-config-properties
+      destination: /opt/jitterbit/Resources/jitterbit-agent-config.properties
+      configMapName: jb-agent-jitterbit-agent-config.properties
+      fileName: jitterbit-agent-config.properties
+    - name: jitterbit-conf
+      destination: /opt/jitterbit/jitterbit.conf
+      configMapName: jb-agent-jitterbit-11-29-0-17.conf
+      fileName: jitterbit.conf
+...
+```
+
+
 
 Specify the values for the parameters in a YAML file that can be provided while installing or upgrading the chart.
 For example:
