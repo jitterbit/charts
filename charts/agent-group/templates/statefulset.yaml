@@ -66,10 +66,10 @@ spec:
             - name: http-healthz
               protocol: TCP
               containerPort: 3000
-            - name: http-listener
+            - name: http-listener-1
               protocol: TCP
               containerPort: 5701
-            - name: http-listener
+            - name: http-listener-2
               protocol: TCP
               containerPort: 5801                            
           {{- if .Values.env }}
