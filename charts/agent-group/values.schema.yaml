@@ -57,7 +57,7 @@ properties:
                 description: Access token for agent registration
                 type: string                
               username:
-                description: Encrypted username of the Agent Installer user (encrypted using JitterbitUtils). Consider use token instead username/password
+                description: Encrypted username of the Agent Installer user (encrypted using JitterbitUtils). Consider using token instead of username/password
                 type: string
               password:
                 description: Encrypted password of the Agent Installer user (encrypted using JitterbitUtils)
@@ -83,29 +83,27 @@ properties:
                 maximum: 600
           - type: "null"
       customFiles:
-              type: array
-              items:
-                type: object
-                properties:
-                  name:
-                    type: string
-                    description: 
-                  destination:
-                    type: string
-                    description: File destination, like /opt/jitterbit/jitterbit.conf
-                  configMapName:
-                    type: string
-                    description: ConfigMap name where file is saved
-                  fileName:
-                    type: string
-                    description: File name like jitterbit.conf
-                required:
-                  - name
-                  - destination
-                  - configMapName
-                  - fileName
+        type: array
+        items:
+          type: object
+          properties:
+            name:
+              type: string
+              description: 
+            destination:
+              type: string
+              description: File destination, like /opt/jitterbit/jitterbit.conf
+            configMapName:
+              type: string
+              description: ConfigMap name where file is saved
+            fileName:
+              type: string
+              description: File name like jitterbit.conf
           required:
-            - registerjson
+            - name
+            - destination
+            - configMapName
+            - fileName
   hpa:
     description: Horizontal pod autoscaler configuration
     $ref: "#/definitions/hpa"
@@ -145,4 +143,4 @@ properties:
   dnsPolicy:
     type: string
     dnsConfig:
-    type: object    
+      type: object

@@ -70,6 +70,10 @@ hpa:
 # replicas is the number of replicas set if the Horizontal Pod Autoscaler is disabled or malfunctioning
 replicas: 1
 
+# Para OrderedReady (opção padrão)
+# podManagementPolicy: OrderedReady (default) // Parallel
+podManagementPolicy: OrderedReady
+
 volume:
 #  storageClassName: gp3
   storage: 50Gi

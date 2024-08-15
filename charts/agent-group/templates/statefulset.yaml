@@ -15,6 +15,7 @@ metadata:
 spec:
   serviceName: {{ template "agent-group.name" . }}
   replicas: {{ .Values.replicas }}
+  podManagementPolicy: {{ .Values.podManagementPolicy }}
   revisionHistoryLimit: {{ .Values.revisionHistoryLimit }}
   selector:
     matchLabels:
@@ -71,7 +72,10 @@ spec:
               containerPort: 5701
             - name: http-listener-2
               protocol: TCP
-              containerPort: 5801                            
+              containerPort: 5801        
+            - name: postgress
+              protocol: TCP
+              containerPort: 6432      
           {{- if .Values.env }}
           env:
             {{- toYaml .Values.env | trimSuffix "\n" | nindent 12 }}
