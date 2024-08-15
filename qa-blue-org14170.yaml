@@ -11,19 +11,15 @@ image:
 agent:
   # agent.registerjson is the agent group's register.json file
   registerjson: {
-    cloudUrl: "https://qa-green.jitterbit.com/",
-    token: "jb_1c61d793-6a9c-4023-9d11-e79019029eaa",
-    #username: "$00XXXXXXXXXXXXX",
-    #password: "$00ZZZZZZZZZZZZZ",
-    agentGroupId: 198100,
+    cloudUrl: "https://qa-blue.jitterbit.com/",
+    token: "jb_011faa57-a32d-45a2-b4a2-29d63493afcc",
+    agentGroupId: 511160,
     agentNamePrefix: "auto_%host%",
     deregisterAgentOnDrainstop: false,
     retryCount: 10,
     retryIntervalSeconds: 5
   }
 
-# Custom agent configuration files
-# kubectl create configmap configmap-name-for-jitterbit.conf -n yournamespace --from-file=yourconfiglocation/jitterbit.conf  
   customFiles:
     - name: httpd-mpm-conf
       destination: /opt/jitterbit/apache/conf/extra/httpd-mpm.conf
@@ -46,7 +42,8 @@ hpa:
   minReplicas: 1
   maxReplicas: 10
 
-replicas: 2
+replicas: 3
+podManagementPolicy: Parallel
 
 volume:
   #storageClassName: gp3
@@ -89,4 +86,4 @@ readinessProbe:
 
 env:
   - name: CATALINA_OPTS
-    value: -Xms2048m -Xmx4096m
+    value: -Xms2048m -Xmx8192m
