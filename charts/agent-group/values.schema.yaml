@@ -15,7 +15,6 @@ required:
   - livenessProbe
   - env
   - tolerations
-  - volume
 properties:
   global:
     description: Global
