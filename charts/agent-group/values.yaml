@@ -74,9 +74,9 @@ replicas: 1
 # podManagementPolicy: OrderedReady (default) // Parallel
 podManagementPolicy: OrderedReady
 
-volume:
+#volume:
 #  storageClassName: gp3
-  storage: 50Gi
+#  storage: 50Gi
 
 # resources are the upper- and lower-bounded resource constraints of the containers
 resources:
