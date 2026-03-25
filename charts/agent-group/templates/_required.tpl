@@ -11,8 +11,13 @@
   {{- required "agent is required!" .Values.agent -}}
     {{- required "agent.registerjson is required!" .Values.agent.registerjson -}}
       {{- required ".Values.agent.registerjson.cloudUrl is required!" .Values.agent.registerjson.cloudUrl -}}
-      {{- required ".Values.agent.registerjson.username is required!" .Values.agent.registerjson.username -}}
-      {{- required ".Values.agent.registerjson.password is required!" .Values.agent.registerjson.password -}}
+      {{- if not .Values.agent.registerjson.token -}}
+        {{- required ".Values.agent.registerjson.username is required when token is not provided!" .Values.agent.registerjson.username -}}
+        {{- required ".Values.agent.registerjson.password is required when token is not provided!" .Values.agent.registerjson.password -}}
+      {{- end -}}
+      {{- if not (or .Values.agent.registerjson.username .Values.agent.registerjson.password) -}}
+        {{- required ".Values.agent.registerjson.token is required when username and password are not provided!" .Values.agent.registerjson.token -}}
+      {{- end -}}
       {{- required ".Values.agent.registerjson.agentGroupId is required!" .Values.agent.registerjson.agentGroupId -}}
   {{- required "hpa is required!" .Values.hpa -}}
   {{- required "replicas is required!" .Values.replicas -}}
