@@ -16,6 +16,7 @@ agent:
 #    cloudUrl: https://na-east.jitterbit.com
 #    username: $00lAuva91/rNxAaoQ+bC3pdtq+dXD9CLw9YdFGxcHLXI3Fhgf6JXQp3dDnIVKZE89xzwREjV/KDqINtTr8XQ/w==
 #    password: $00RIOD/BqGlQ1ack56p2GKG8vXJlpfAnbLxyUs5GqH8=
+#    token: xx_xx_xxxxx  # (optional if username and password are not provided)
 #    agentGroupId: 6282
 #    agentNamePrefix: "%host%"
 #    deregisterAgentOnDrainstop: true
