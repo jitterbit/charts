@@ -3,6 +3,23 @@ entries:
   agent-group:
   - apiVersion: v1
     appVersion: "10"
+    created: "2026-03-31T04:02:03.51249892Z"
+    description: Jitterbit Agent Group
+    digest: 918a60c9cfaa6d982d8425462b9f1a65fae341551152e647d9798f1fe5ba8804
+    home: https://github.com/jitterbit/charts
+    icon: https://raw.githubusercontent.com/jitterbit/charts/master/logos/jitterbit-logo-stacked-rgb.png
+    keywords:
+    - jitterbit
+    - agent
+    - group
+    name: agent-group
+    sources:
+    - https://github.com/jitterbit/charts
+    urls:
+    - https://github.com/jitterbit/charts/releases/download/agent-group-1.0.11/agent-group-1.0.11.tgz
+    version: 1.0.11
+  - apiVersion: v1
+    appVersion: "10"
     created: "2026-03-31T03:51:23.656836865Z"
     description: Jitterbit Agent Group
     digest: 232d4a3352494607b775ce64866857658e16036a86693766711208f2ebfa66dc
@@ -210,4 +227,4 @@ entries:
     urls:
     - https://github.com/jitterbit/charts/releases/download/dockerconfigjson-1.0.0/dockerconfigjson-1.0.0.tgz
     version: 1.0.0
-generated: "2026-03-31T03:51:23.656890165Z"
+generated: "2026-03-31T04:02:03.512571795Z"
