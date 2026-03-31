@@ -41,12 +41,7 @@ properties:
           - type: object
             additionalProperties: false
           - type: object
-            additionalProperties: false
-            required:
-              - cloudUrl
-              - username
-              - password
-              - agentGroupId
+            additionalProperties: true
             properties:
               cloudUrl:
                 description: Base URL of the Jitterbit Harmony Cloud
@@ -56,6 +51,12 @@ properties:
                 type: string
               password:
                 description: Encrypted password of the Agent Installer user (encrypted using JitterbitUtils)
+                type: string
+              token:
+                description: Authentication token (alternative to username/password)
+                type: string
+              agentMetricsToken:
+                description: Token for agent metrics reporting
                 type: string
               agentGroupId:
                 description: Agent group ID from Management Console (hover over an agent group to see its ID)
